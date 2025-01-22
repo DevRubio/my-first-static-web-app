@@ -15,10 +15,12 @@ function App() {
   }, []);
 console.log("Data ", data)
   return <div>Hello {
-    data.foreach(element => {
-      <div>
-        <pre>{JSON.stringify(element, null, 2)}</pre>
-      </div>
+    data.map((item, index) => {
+      return (
+        <div key={index}>
+          <pre>{JSON.stringify(item, null, 2)}</pre>
+        </div>
+      );
     })
   }</div>;
 }
