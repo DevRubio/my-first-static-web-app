@@ -1,16 +1,20 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
-  const [data, setData] = useState('')
+  const [data, setData] = useState('');
 
-  useEffect(()=>{
-    (async function(){
-      const response = await (await fetch(`api/disponible/read`)).json()
-      setData(response)
-    })
-  })
-  const value = 'World';
-  return <div>Hello {response}</div>;
+  useEffect(() => {
+    (async function () {
+      const fetchData = async () => {
+        const response = await fetch(`api/disponible/read`);
+        const data = await response.json();
+        setData(data);
+      };
+      fetchData();
+    })();
+  }, []);
+
+  return <div>Hello {data}</div>;
 }
 
 export default App;
