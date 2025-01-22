@@ -13,8 +13,14 @@ function App() {
       fetchData();
     })();
   }, []);
-
-  return <div>Hello {data}</div>;
+console.log("Data ", data)
+  return <div>Hello {
+    data.foreach(element => {
+      <div>
+        <pre>{JSON.stringify(element, null, 2)}</pre>
+      </div>
+    })
+  }</div>;
 }
 
 export default App;
